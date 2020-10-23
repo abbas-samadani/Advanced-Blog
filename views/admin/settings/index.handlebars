@@ -1,0 +1,47 @@
+<div class="col-md-12 mb-30">
+            <div class="box">
+              <div class="box-head">
+                <div class="row">
+                  <h4 class="title">تنظیمات بلاگ</h4>
+                </div>
+              </div>
+              <div class="box-body">
+                <form action="/admin/settings/store" method="POST">
+                  <div class="row mbn-20">
+                    <div class="col-12 mb-20">
+                      <div class="row mbn-20">
+                        <div class="col-lg-6 mb-20">
+                          <label for="formLayoutCity1">عمومی</label>
+                          <input type="text" name="title_blog" id="formLayoutCity1" class="form-control" value="{{ presentedSettings.title_blog }}" placeholder="عنوان وبسایت" />
+                        </div>
+
+                        <div class="col-lg-6 mb-20">
+                          <label for="formLayoutZip1">محتوا</label>
+                          <input type="text" name="content_number" id="formLayoutZip1" class="form-control" value="{{ presentedSettings.content_number }}" placeholder="10" />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-12 mb-20">
+                      <textarea id="formLayoutMessage1" name="content_blog" class="form-control" placeholder="توضیحات وبسایت" rows="3">{{ presentedSettings.content_blog }}</textarea>
+                    </div>
+
+                    <div class="col-12 mb-20">
+                      <h6 class="mb-15">سایر تنظیمات</h6>
+
+                      <div class="adomx-checkbox-radio-group">
+                        <label class="adomx-checkbox primary"><input type="checkbox" name="someone_can_register" {{#isChecked presentedSettings.someone_can_register }} checked {{/isChecked }} /> <i class="icon"></i> هر کس می تواند ثبت نام کند</label>
+                        <label class="adomx-checkbox primary"><input type="checkbox" name="users_can_enter_comments" {{#isChecked presentedSettings.users_can_enter_comments }} checked {{/isChecked }} /> <i class="icon"></i> کاربران می توانند دیدگاه‌ ثبت کنند</label>
+                      </div>
+                    </div>
+
+                    <div class="col-12 mb-20">
+                      <input type="submit" value="ذخیره سازی" class="button button-primary" />
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- Revenue Statistics Chart End -->
+        </div>

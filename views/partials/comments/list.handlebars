@@ -1,0 +1,41 @@
+<ul>
+                        <li class="comment ">
+                            {{#each comments}}
+                                <article class="comment-body">
+                                <footer class="comment-meta">
+                                    <div class="comment-author">
+                                        <img alt="" src="{{this.gravatar}}" class="">
+                                        <b class="fn">
+                                            <a href="#" rel="external nofollow" class="url">
+                                                {{this.user_name}}
+                                            </a>
+                                        </b>
+                                        <span class="says">گفته:</span>
+                                    </div>
+                                    <!-- .comment-author -->
+
+                                    <div class="comment-metadata">
+                                        <a href="#">
+                                            <time>{{this.created_ad_persian}}</time>
+                                        </a>
+                                    </div><!-- .comment-metadata -->
+
+                                </footer><!-- .comment-meta -->
+
+                                <div class="comment-content">
+                                    <p>{{this.comment}}</p>
+                                </div><!-- .comment-content -->
+
+                                <div class="reply">
+                                    <a rel="nofollow" class="comment-reply-link" href="#">پاسخ</a>
+                                </div>
+                            </article><!-- .comment-body -->
+                            {{#if (hasChild this.id)}}
+                               {{>comments/list comments=(getChild this.id)}}
+                            {{/if}}
+
+                            {{/each}}
+                            
+                        </li><!-- #comment-## -->
+                        
+                    </ul>

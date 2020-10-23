@@ -1,0 +1,83 @@
+ <!-- Page Headings Start -->
+        <div class="row justify-content-between align-items-center mb-10">
+          <!-- Page Heading Start -->
+          <div class="col-12 col-lg-auto mb-20">
+            <div class="page-heading">
+              <h3>دیدگاه‌ها</h3>
+            </div>
+          </div>
+          <!-- Page Heading End -->
+        </div>
+        <!-- Page Headings End -->
+
+        <div class="row mbn-30">
+          <!-- Revenue Statistics Chart Start -->
+          <div class="col-md-12 mb-30">
+            <div class="box">
+              <div class="box-head">
+                <div class="row">
+                  <h4 class="title">لیست دیدگاه‌های بلاگ</h4>
+                  
+                </div>
+              </div>
+              <div class="box-body">
+                <table class="table table-vertical-middle table-selectable">
+                  <!-- Table Head Start -->
+                  <thead>
+                    <tr>
+                      <th>نویسنده</th>
+                      <th>دیدگاه</th>
+                      <th>در پاسخ به</th>
+                      <th>عملیات</th>
+                      <th>ارسال شده</th>
+                    </tr>
+                  </thead>
+                  <!-- Table Head End -->
+
+                  <!-- Table Body Start -->
+                  <tbody> 
+                    {{#each comments}} 
+                      <tr>
+                      <td>
+                        <div class="avatar mr-10 mb-10 d-inline-block">
+                          <img src="{{ this.gravatar }}" alt=""  />
+                        </div>
+                        <div class="name mr-10 mt-10 d-inline-block">
+                          {{ this.user_name }} 
+                        </div>                       
+                         
+                      </td>
+                      <td>{{ this.comment}}</td>
+                      <td>{{ this.title }}</td>
+                      {{#ifCond this.status  0}}
+                      
+                      <td>
+                        <a href="/admin/comments/approve/{{ this.id }}" class="button button-success"><span>تایید</span></a>
+                        <a href="/admin/comments/reject/{{ this.id }}" class="button button-warning"><span>رد</span></a>
+                        <a href="/admin/comments/delete/{{ this.id }}" class="button button-danger"><span>حذف</span></a>
+                      </td>                     
+                        
+                      {{/ifCond}}
+                      {{#ifCond this.status  1}}
+                        <td>
+                          <a class="button button-warning"><span> رد شد</span></a>
+                        </td>
+                      {{/ifCond}}
+                      {{#ifCond this.status  2}}
+                        <td>
+                          <a class="button button-success"><span> تایید شد</span></a>
+                        </td>
+                      {{/ifCond}}
+                      <td>{{ this.create_ad_persian }}</td>
+                    </tr>
+                    {{/each}}                  
+                    
+                  </tbody>
+                  <!-- Table Body End -->
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- Revenue Statistics Chart End -->
+        </div>
+      </div>

@@ -1,0 +1,73 @@
+ <!-- Page Headings Start -->
+        <div class="row justify-content-between align-items-center mb-10">
+          <!-- Page Heading Start -->
+          <div class="col-12 col-lg-auto mb-20">
+            <div class="page-heading">
+              <h3 class="title">مطالب <span>/ ویرایش مطالب</span></h3>
+            </div>
+          </div>
+          <!-- Page Heading End -->
+
+          <!-- Page Button Group End -->
+        </div>
+        <!-- Page Headings End -->
+
+        <div class="row mbn-30">
+          <!-- Revenue Statistics Chart Start -->
+          <div class="col-md-12 mb-30">
+            <div class="box">
+              <div class="box-head">
+                <div class="row">
+                  <h4 class="title">اطلاعات مطلب</h4>
+                </div>
+              </div>
+              
+              <div class="box-body">
+                {{#if hasError}}
+                  {{#each errors}}
+                    <div class="alert alert-danger" role="alert">                    
+                        <strong>{{ this }}</strong>
+                        <button class="close" data-dismiss="alert"><i class="zmdi zmdi-close"></i></button>                    
+                    </div>
+                  {{/each}}
+                {{/if}}
+                <form method="POST" action="/admin/posts/update/{{ post.id }}">
+                  <div class="row mbn-20">
+                    <div class="col-12 mb-20">
+                      <input type="text" name="title" id="formLayoutUsername3" class="form-control" value="{{ post.title }}" placeholder="عنوان مطلب" />
+                    </div>
+                    <div class="col-12 mb-20">
+                      <input type="text" name="slug" id="formLayoutEmail3" class="form-control" value="{{ post.slug }}" placeholder="نامک مطلب" />
+                    </div>
+
+                    <div class="col-12 mb-20">
+                      <textarea id="content" name="content" class="form-control" placeholder="محتوای مطلب">{{ post.content }}</textarea>
+                    </div>
+
+                    <div class="col-12 mb-15">
+                      <select name="author" class="form-control">
+                        {{#each dataUser}}
+                          <option value="{{ this.id }}" {{#isPostAuthor this.id }} selected {{/isPostAuthor }}>{{ this.full_name }}</option>
+                        {{/each}}
+                      </select>
+                    </div>
+
+                    <div class="col-12 mb-20">
+                      <h6 class="mb-15">وضعیت مطلب</h6>
+                      <div class="form-group">
+                        <label class="inline"><input name="status" type="radio" value="{{ statuses.DRAFT }}" {{#isSelectedStatus 0 }} checked {{/isSelectedStatus }}/>پیش نویس</label>
+                        <label class="inline"><input name="status" type="radio" value="{{ statuses.REVIEW }}" {{#isSelectedStatus 1 }} checked {{/isSelectedStatus }} />در حال بازبینی</label>
+                        <label class="inline"><input name="status" type="radio" value="{{ statuses.PUBLISHED }}" {{#isSelectedStatus 2 }} checked {{/isSelectedStatus }} />منتشرشده</label>                        
+                      </div>
+                    </div>
+
+                    <div class="col-12 mb-20">
+                      <input type="submit" value="ذخیره سازی" class="button button-primary" />
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- Revenue Statistics Chart End -->
+        </div>
